@@ -1,0 +1,43 @@
+label {
+    font-size: 25px;
+}
+
+.boton {
+    padding: 10px;
+   font-size: 25px;
+   border-radius: 10px;
+   background-color: rgb(192, 192, 192);
+}
+.boton:hover{
+    color: #ffffff;
+    background-color: #686868;
+    text-decoration: none;
+    cursor: pointer; 
+
+  }
+.ingresa{
+    border-radius: 100px;
+    padding: 10px;
+    font-size: 25px;
+    background-color: rgb(192, 192, 192);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#seccion .instrucciones {
+    padding-top: 25px;
+	text-decoration: underline;
+	font-size: 30px;
+	color: #2600ff;
+	font-style: 'arial';
+	text-align: center;
+	
+}
+.muchotexto{
+    border-radius: 10px;
+    height: 5em;
+    width: 500px;
+    padding: 5px;
+    font-size: 25px;
+    background-color: rgb(192, 192, 192);
+    overflow:hidden;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

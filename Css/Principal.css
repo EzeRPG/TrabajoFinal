@@ -1,0 +1,132 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	
+}
+body{/*https://mybrandnewlogo.com/es/generador-de-gradiente-de-color*/
+	/*background-image: radial-gradient(circle at 69.59% 83.93%, #552b83 0, #381775 25%, #0c0366 50%, #000057 75%, #00004b 100%);*/
+	background-color: rgb(0, 168, 112);
+}
+
+/*Head*/
+#ContenedorHeader{
+    position: relative;
+}
+
+
+#header{
+	display: block;
+	margin-left: 5%;
+	width: auto;
+	background-color: #000;
+	margin-left: 45px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-62%, -0%);
+}
+
+ul, ol {
+	list-style: none;
+}
+.nav li a{
+	background-color: #2b0b56;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 10px;
+	display: block;
+}
+
+
+.nav li a:hover {
+	background-color: #fff;
+	color: #000;
+}
+
+.nav > li {
+	float:left;
+}
+
+.nav li ul {
+	display: none;
+	position: absolute;
+	min-width: auto;
+}
+
+.nav li:hover > ul {
+	display: block;
+}
+
+
+
+/*Paginas*/
+#principal{
+	
+	width: 80%;
+	float:left;
+
+	margin: 10px auto;
+	
+}
+
+#publicaciones{
+	width: 100%;
+	height: auto; overflow: hidden;
+	margin-top: 10px;
+	margin-left: 15px;
+
+}
+
+.post{
+	width: 95%;
+	height: auto; overflow: hidden;
+	margin-top: 25px;
+	padding: 7px 0px 7px 7px;
+	background: #2b0b56;
+	border-left-style: solid;
+	border-left-width: 5px;
+	border-left-color: #220D3E;
+	border-top-style: solid;
+	border-top-width: 5px;
+	border-top-color: #220D3E;
+	border-radius: 25px 25px 25px 25px;
+	
+	background-color: #2b0b56;	
+	box-shadow: 13px 0px 13px;
+
+} 
+
+
+#publicaciones .titulo-post{
+	font-size: 25px;
+	font-style: 'arial';
+	text-align:center;
+	text-decoration: underline;
+	color: #B0AEB2;
+}
+
+#publicaciones .img-post{
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: 7px 7px 7px 0px;
+	padding: -5px;
+
+}
+ 
+
+
+#publicaciones .fecha{
+	font-family: 'calibri light';
+	color: #B0AEB2;
+}
+#publicaciones .fech{
+	font-family: 'calibri light';
+	color: #B0AEB2;
+}
+#publicaciones .parrafo-post{
+	font-family: 'calibri light';
+	font-size: 16px;
+	color: #fff;
+	padding: 0px;
+	margin-top: 0px;
+}
