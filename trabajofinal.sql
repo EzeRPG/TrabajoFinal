@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-10-2022 a las 04:40:29
+-- Tiempo de generación: 18-10-2022 a las 18:28:09
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -29,12 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `publicaciones` (
   `Id` int(10) NOT NULL,
-  `Id_Usuario` int(10) NOT NULL,
+  `Id_Usuario` int(11) NOT NULL,
   `Titulo` varchar(250) NOT NULL,
   `Texto` longtext NOT NULL,
   `NombreFoto` varchar(250) NOT NULL,
-  `Fecha` date NOT NULL
+  `Fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `publicaciones`
+--
+
+INSERT INTO `publicaciones` (`Id`, `Id_Usuario`, `Titulo`, `Texto`, `NombreFoto`, `Fecha`) VALUES
+(0, 1, 'Prueba!', ' Esto es una prueba de la bitácora 🤩 ', 'Prueba!.png', '2022-10-18 18:27:33');
 
 -- --------------------------------------------------------
 
@@ -44,10 +51,10 @@ CREATE TABLE `publicaciones` (
 
 CREATE TABLE `usuarios` (
   `Id` int(10) UNSIGNED NOT NULL,
-  `Usuario` varchar(250) NOT NULL,
-  `Clave` varchar(250) NOT NULL,
-  `Nombre` varchar(250) NOT NULL,
-  `Apellido` varchar(250) NOT NULL
+  `Usuario` varchar(45) NOT NULL,
+  `Clave` varchar(255) NOT NULL,
+  `Nombre` varchar(200) NOT NULL,
+  `Apellido` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -77,6 +84,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `publicaciones`
+--
+ALTER TABLE `publicaciones`
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
