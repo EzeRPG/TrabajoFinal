@@ -27,7 +27,7 @@
 	<center>
 	<section id="seccion">
 		<article class="articulo">
-			<form action="DB/subirBD.php" method="post" enctype="multipart/form-data">
+			<form action="Objetos/Intermediario.php" method="post" enctype="multipart/form-data">
 				<h1 class="instrucciones">Titulo</h1><br>
 
 				<input type="text" name="titulo" autofocus class="ingresa" required>

@@ -1,5 +1,4 @@
 <?php  
-	require ("DB/conectar.php");
 	session_start();
 	$controlar= $_SESSION['usuario'];
 

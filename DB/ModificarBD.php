@@ -1,5 +1,4 @@
 <?php 
-	require ("conectar.php");
 	session_start();
 	$controlar= $_SESSION['usuario'];
 
@@ -7,22 +6,41 @@
 		echo "no se encuentra conectado";
 		die();
 	}
+    include_once("../DB/conectar.php");
+	$conectar = new Conexion();
+
+    include_once("../Objetos/POO_ManejoPubli.php");
+    include_once("../Objetos/POO_Publicacion.php");
 
 	//TEXTO
 	//recibir datos
 	
     $Id= $_POST['Id'];
-    $consulta="SELECT * FROM publicaciones  WHERE Id = '$Id'";
-			
-	if ($resultado=mysqli_query($conectar, $consulta)) {
+    //traermoas los datos que nos van a faltar
+    $ManejoPublicacion= new ManejoDePublicacion($conectar->Conectar());
+    $DatosPubli= $ManejoPublicacion->GetPublicacionID($Id);
+
+    
+    if (empty($DatosPubli)) {
+        echo"algo fallo";
+    }else {
+        foreach ($DatosPubli as $value) {
+            
+        }
+    }
+
+
+
+    /* se elimina
+	if ($resultado=mysqli_query($conectar->Conectar(), $consulta)) {
 		while ($registro=mysqli_fetch_assoc($resultado)) {
 			$nombrefoto= $registro['NombreFoto'];
 	    }
 
 	}
-
-	$titulo= $_POST['titulo'];
-	$texto = $_POST['Texto'];
+    */
+	$Titulo= $_POST['titulo'];
+	$Texto = $_POST['Texto'];
 
 
 	
@@ -36,37 +54,22 @@
     //Sin foto editada
     if ($Nombre_imagen==null) {
 
-        $actualizarBD ="UPDATE publicaciones SET Titulo='$titulo',Texto='$texto' WHERE Id= '$Id'";
-        
-        
-
-        if ($conectar->query($actualizarBD)===true) {
-            mysqli_close($conectar);
-            header("Location:../index.php");
-
-        } else{
-            mysqli_close($conectar);
-            die("error al insertar los datos");
-        }
+        $ManejoPublicacion->ModificarPubliTT($Id,$Titulo,$Texto);
+        $conectar->CerrarConexion();	
     }
     //con foto editada
     else {
-        if (unlink('../DBFotos/'.$nombrefoto)) { //esta linea elimina la foto de nuestra carpeta
-            $destino= '../DBFotos/'. $Nombre_imagen;
-	        move_uploaded_file ($_FILES['foto'] ['tmp_name'], $destino); 
-
-            $actualizarBD ="UPDATE publicaciones SET `Titulo`='$titulo',`Texto`='$texto',`NombreFoto`='$Nombre_imagen' WHERE Id='$Id'";
-
-            if ($conectar->query($actualizarBD) === TRUE) {
-                header("Location:../index.php");
-                mysqli_close($conectar);
-
-            }else{
-                mysqli_close($conectar);
-                die("Error al borrar los datos en la base de datos");
-        }
+        if (unlink('../DBFotos/'.$DatosPubli[0]->GetNFoto())) { //esta linea elimina la foto de nuestra carpeta
+            
+            $destino= '../DBFotos/';
+	        $tipoArchivo = strtolower(pathinfo($_FILES["foto"]["name"], PATHINFO_EXTENSION));
+            $NNombreFoto= $Titulo .".". $tipoArchivo;
+	        move_uploaded_file ($_FILES['foto'] ['tmp_name'], $destino . $NNombreFoto);//Guardamos la fotografia con el nombre en la publicacion
+            $ManejoPublicacion->ModificarPubliTTF($Id,$Titulo,$Texto, $NNombreFoto);
+            $conectar->CerrarConexion();	
         }
         else{
+            $conectar->CerrarConexion();	
             echo"Error no se pudo eliminar la foto volver a intentar";
         }
         
@@ -74,3 +77,4 @@
     }
 
 
+    ?>
